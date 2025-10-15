@@ -1,0 +1,85 @@
+.catalog {
+  padding: 2rem 5%;
+  text-align: center;
+}
+
+.catalog h2 {
+  font-size: 2.5rem;
+  color: var(--azul-oscuro);
+  margin-bottom: 1.5rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: var(--blanco);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: var(--transicion);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  width: auto;
+  /* height: 220px; */
+  height: auto;
+  object-fit: cover;
+  border-bottom: 3px solid var(--azul-claro);
+}
+
+.product-card h3 {
+  font-size: 1.3rem;
+  color: var(--azul-oscuro);
+  margin: 1rem 0 0.5rem;
+}
+
+.product-card p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.product-card button {
+  background: var(--azul-medio);
+  color: var(--blanco);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transicion);
+  margin-top: 1rem;
+}
+
+.product-card button:hover {
+  background: var(--azul-oscuro);
+  transform: scale(1.05);
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .product-card {
+    margin: 0 auto;
+  }
+
+  .product-card h3 {
+    font-size: 1.2rem;
+  }
+}
