@@ -17,6 +17,11 @@
   margin: 0;
 }
 
+/* 1. Ocultar el botón de hamburguesa por defecto (en escritorio) */
+.menu-toggle {
+  display: none; 
+}
+
 .nav-links {
   display: flex;
   gap: 1.5rem;
@@ -54,17 +59,59 @@
   width: 100%;
 }
 
-/* Para pantallas móviles */
+
+/* === ESTILOS PARA MÓVILES (Menú Hamburguesa) === */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    /* Permitir que el logo y el botón estén en la misma línea */
+    flex-wrap: wrap; 
+    padding: 1rem;
+  }
+  
+  /* 2. Mostrar el botón de hamburguesa en móvil */
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--blanco);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1001; /* Asegurar que esté sobre el menú */
   }
 
+  /* 3. Estilo por defecto: Ocultar los enlaces */
   .nav-links {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
-    margin-top: 1rem;
+    /* Ocultar y posicionar fuera de la vista */
+    position: absolute;
+    top: 100%; /* Colocarlo justo debajo de la barra de navegación */
+    left: 0;
+    background: var(--azul-oscuro);
+    padding: 0; /* padding inicial cero para la animación */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+  }
+  
+  /* 4. Estilo de Apertura: Mostrar los enlaces */
+  .nav-links.open {
+    max-height: 300px; /* Un valor lo suficientemente grande */
+    padding: 1rem 2rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Asegurar que los enlaces ocupen todo el ancho para la navegación móvil */
+  .nav-links li {
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
